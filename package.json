@@ -1,0 +1,39 @@
+{
+  "name": "@xan105/log",
+  "version": "1.0.0",
+  "description": "A very simple logger",
+  "type": "module",
+  "main": "log.cjs",
+  "exports": {
+    "import": "./esm.mjs",
+    "require": "./log.cjs"
+  },
+  "engines": {
+    "node": ">=0.12"
+  },
+  "scripts": {
+    "lint": "npx eslint --ignore-path .gitignore ./**/*.{cjs,mjs}"
+  },
+  "keywords": [
+    "log",
+    "logger",
+    "debug"
+  ],
+  "author": {
+    "name": "Anthony Beaumont",
+    "email": "dev.xan105@outlook.be",
+    "url": "https://xan105.com/"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xan105/node-log.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xan105/node-log/issues"
+  },
+  "homepage": "https://github.com/xan105/node-log#readme",
+  "devDependencies": {
+    "eslint": "^7.4.0"
+  }
+}
