@@ -87,16 +87,36 @@ class Logger {
 
       if(this.options.console) 
       {
-          const header = `${code.bright}[${time.hms}${code.grey}${time.ms}${code.reset} ${levels[level].color}${levels[level].prefix}${code.white}]${code.reset}`;
-          const msg = (event === Object(event)) ? `${header} ${os.EOL}` + util.inspect(event, {colors: true, depth: null}) : `${header} ${event}`;
-
-          if (event instanceof Error || level === "error") {
-            console.error(msg);
-          } else if (level === "warn") {
-            console.warn(msg);
-          } else {
-            console.log(msg);
+          if (typeof window !== 'undefined' && typeof window.document !== 'undefined') //Browser (electron,NW.js,...)
+          {
+            const header = `%c[${time.hms}%c${time.ms}%c]%c`;
+            const css = ["font-weight:bold","color: grey","color: inherit; font-weight:bold","font-weight:initial"];
+            const msg = (event === Object(event)) ? `${header} ${os.EOL}` + util.inspect(event, {colors: true, depth: null}) : `${header} ${event}`;
+            
+            if (event instanceof Error || level === "error") {
+              console.error(msg,...css);
+            } else if (level === "warn") {
+              console.warn(msg,...css);
+            } else {
+              css[0] += ";padding-left:10px";
+              console.log(msg,...css);
+            } 
+            
           } 
+          else 
+          {
+            const header = `${code.bright}[${time.hms}${code.grey}${time.ms}${code.reset} ${levels[level].color}${levels[level].prefix}${code.white}]${code.reset}`;
+            const msg = (event === Object(event)) ? `${header} ${os.EOL}` + util.inspect(event, {colors: true, depth: null}) : `${header} ${event}`;
+            
+            if (event instanceof Error || level === "error") {
+              console.error(msg);
+            } else if (level === "warn") {
+              console.warn(msg);
+            } else {
+              console.log(msg);
+            } 
+            
+          }
       }
       
       if(this.options.file) 
@@ -130,13 +150,9 @@ class Logger {
 
 function timeStamp() {
     const date = new Date();
-    let hour = "0" + date.getHours();
-    let min = "0" + date.getMinutes();
-    let sec = "0" + date.getSeconds();
-    let msec = "00" + date.getMilliseconds();
-    let dmy = `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear() % 100}`;
-    let hms = `${hour.substr(-2)}:${min.substr(-2)}:${sec.substr(-2)}`;
-    let ms = `.${msec.substr(-3)}`;
+    const dmy = `${("0"+date.getDate()).substr(-2)}/${("0"+(date.getMonth()+1)).substr(-2)}/${date.getFullYear() % 100}`;
+    const hms = `${("0"+date.getHours()).substr(-2)}:${("0"+date.getMinutes()).substr(-2)}:${("0"+date.getSeconds()).substr(-2)}`;
+    const ms = `.${("00"+date.getMilliseconds()).substr(-3)}`;
     return { date: dmy, hms: hms, ms: ms, full: `${dmy} ${hms}${ms}`}
 }
 
