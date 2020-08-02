@@ -26,6 +26,12 @@
         "parserOptions": {
           "sourceType": "module"
         }
+      },
+      {
+        "files": ["log.cjs"],
+        "rules": {
+          "no-undef": "warn"
+        }
       }
     ]
 }

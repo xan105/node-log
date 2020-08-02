@@ -34,6 +34,6 @@
   },
   "homepage": "https://github.com/xan105/node-log#readme",
   "devDependencies": {
-    "eslint": "^7.4.0"
+    "eslint": "^7.6.0"
   }
 }
