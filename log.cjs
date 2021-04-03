@@ -24,7 +24,7 @@ SOFTWARE.
 
 "use strict";
 
-const os = require('os');
+const { EOL } = require('os');
 const fs = require('fs');
 const util = require('util');
 const path = require('path');
@@ -91,7 +91,7 @@ class Logger {
           {
             const header = `%c[${time.hms}%c${time.ms}%c]%c`;
             const css = ["font-weight:bold","color: grey","color: inherit; font-weight:bold","font-weight:initial"];
-            const msg = (event === Object(event)) ? `${header} ${os.EOL}` + util.inspect(event, {colors: true, depth: null}) : `${header} ${event}`;
+            const msg = (event === Object(event)) ? `${header} ${EOL}` + util.inspect(event, {colors: true, depth: null}) : `${header} ${event}`;
             
             if (event instanceof Error || level === "error") {
               console.error(msg,...css);
@@ -106,7 +106,7 @@ class Logger {
           else 
           {
             const header = `${code.bright}[${time.hms}${code.grey}${time.ms}${code.reset} ${levels[level].color}${levels[level].prefix}${code.white}]${code.reset}`;
-            const msg = (event === Object(event)) ? `${header} ${os.EOL}` + util.inspect(event, {colors: true, depth: null}) : `${header} ${event}`;
+            const msg = (event === Object(event)) ? `${header} ${EOL}` + util.inspect(event, {colors: true, depth: null}) : `${header} ${event}`;
             
             if (event instanceof Error || level === "error") {
               console.error(msg);
@@ -126,17 +126,21 @@ class Logger {
           if(event === Object(event)) 
           {
               if (event instanceof Error) {
-                this.stream.write(`${header}${os.EOL}` + event.stack + os.EOL);
+                this.stream.write(`${header}${EOL}` + event.stack.toString().replace(/\n/, EOL) + EOL);
               } else {
-                this.stream.write(`${header}${os.EOL}` + JSON.stringify(event, null, 2) + os.EOL);
+                this.stream.write(`${header}${EOL}` + JSON.stringify(event, null, 2).replace(/\n/, EOL) + EOL);
               } 
           } 
           else 
           {
-              this.stream.write(`${header} ${event}${os.EOL}`);
+              this.stream.write(`${header} ${event}${EOL}`);
           }
       }
       
+    }
+    
+    info(event) {
+      this.log(event,"info");
     }
     
     warn(event) {
