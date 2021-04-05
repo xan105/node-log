@@ -1,12 +1,12 @@
 {
   "name": "@xan105/log",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A very simple logger",
   "type": "module",
-  "main": "log.cjs",
+  "main": "./lib/log.cjs",
   "exports": {
-    "import": "./esm.mjs",
-    "require": "./log.cjs"
+    "import": "./lib/esm.mjs",
+    "require": "./lib/log.cjs"
   },
   "engines": {
     "node": ">=0.12"
@@ -17,7 +17,8 @@
   "keywords": [
     "log",
     "logger",
-    "debug"
+    "debug",
+    "electron"
   ],
   "author": {
     "name": "Anthony Beaumont",

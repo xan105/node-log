@@ -2,7 +2,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-import logger from "../esm.mjs";
+import logger from "../lib/esm.mjs";
 
 const debug = new logger({
   console: true,

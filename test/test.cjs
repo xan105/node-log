@@ -1,6 +1,6 @@
 "use strict";
 
-const debug = new (require("../log.cjs"))({
+const debug = new (require("../lib/log.cjs"))({
   console: true,
   file: __dirname + "/test.txt"
 });
