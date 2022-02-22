@@ -2,7 +2,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-import Logger from "../lib/esm.js";
+import Logger from "../lib/index.js";
 
 const debug = new Logger({
   console: false,

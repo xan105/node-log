@@ -1,7 +1,7 @@
 declare interface ILoggerOptions {
-  console?: bool,
+  console?: boolean,
   file?: string | null,
-  appendToFile?: bool
+  appendToFile?: boolean
 }
 
 declare class Logger {

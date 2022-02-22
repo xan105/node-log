@@ -1,12 +1,17 @@
+About
+=====
+
 A very simple logger.
 
 Install
--------
+=======
 
-`npm install @xan105/node-log`
+```
+npm install @xan105/log
+```
 
 Usage example
--------------
+=============
 
 ```js
 import Logger from "@xan105/log";
