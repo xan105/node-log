@@ -1,12 +1,12 @@
 {
   "name": "@xan105/log",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A very simple logger",
   "type": "module",
-  "exports": "./lib/esm.js",
-  "types": "./types/esm.d.ts",
+  "exports": "./lib/index.js",
+  "types": "./types/index.d.ts",
   "engines": {
-    "node": "^14.17.0 || >=16.0.0"
+    "node": ">=16.0.0"
   },
   "scripts": {
     "lint": "npx eslint --ignore-path .gitignore ./**/*.{js,mjs}"
@@ -32,6 +32,6 @@
   },
   "homepage": "https://github.com/xan105/node-log#readme",
   "devDependencies": {
-    "eslint": "^8.0.1"
+    "eslint": "^8.9.0"
   }
 }
